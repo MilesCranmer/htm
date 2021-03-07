@@ -2,6 +2,8 @@
 
 ## Installation
 
+Install `numpy`, `pandas`, and `fuzzywuzzy`.
+
 Clone the repo.
 
 Add the following macros to your `.bashrc` file,
@@ -33,16 +35,34 @@ alias hsoon='htm "get_soon()"'
 alias hpp='htmp "sortload()"'
 ```
 
-## How to use.
+## Commands
 
 Control the task manager from the terminal. All tasks will be stored
-in `tasks.csv`.
+in `tasks.csv`. You can use `<ctl-c>` to break out of a command,
+or type `q`.
 
-- Add tasks with `ha`.
-- Edit tasks with `hp`.
-- Delete a task with `hd`.
 - Print all tasks, sorted by score, with `hp`.
+- Add tasks with `ha`.
+- Delete a task with `hd`.
+- Edit parts tasks with `he`.
 - Choose a random tasks, weighted by score, with `hs`.
 - Choose a random tasks, weighted by hours/day, with `hsh`.
 - Print the tasks due soon with `hsoon`.
 - Print statistics about upcoming tasks with `hst`.
+
+For commands requiring you to identify a task, you can use fuzzy search.
+e.g., "finish paper" will match to "need to finish paper on X".
+
+For commands requiring a date, you can use generic strings like `Monday`,
+`2021-05-01`, `February 1`, etc., and the date parser will try to identify
+the date.
+
+## Columns
+
+- `task`: Name of the task.
+- `score`: How important it is that you work on the task today.
+- `etc`: Estimated time to completion, in hours.
+- `hours/day`: How many hours per day you need to work on it to finish by the deadline.
+- `due`: When the task is due.
+- `hard`: Whether the deadline is hard (1) - meaning a hard deadline, soft (0.5) - meaning you would like to finish by this date, but it's not the end of the world, or nonexistent (0) - meaning it is an arbitrary date you want to aim for.
+- `repeat`: Whether to reset the due date after the deadline has passed to this number of days in the future. Useful for weekly/monthly deadly. `0` means no repeat.
