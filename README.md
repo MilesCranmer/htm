@@ -4,6 +4,7 @@ I've never been happy with any project management software for personal
 to-do items, so I wrote my own as a csv-based CLI. 
 
 ![](htm_demo.gif)
+(it loops so you can add multiple tasks. Type `q` or `<ctl-c>` to quit.)
 
 Here are the advantages:
 1. Not web-based, just from a script, so it doesn't feel bulky to view tasks/edit things. All command-line based.
