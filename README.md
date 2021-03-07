@@ -1,5 +1,13 @@
 # Human Task Manager
 
+I've never been happy with any project management software for personal
+to-do items, so I wrote my own as a CLI script. Here's the advantages:
+1. Not web-based, just from a script, so it doesn't feel bulky to view tasks/edit things. All command-line based.
+2. Tracks deadlines, and calculates how many hours per day you need to work on each task to meet your deadline, based on your estimated # of hours required.
+3. Allows you to define how "hard" a deadline is. Is it an actual deadline, or is it just a soft goal you'd like to meet?
+4. Allows repeating tasks of arbitrary length.
+5. Has a "sampler" which lets you randomly sample tasks based on hours/day or task score, so it makes a long to-do list less intimidating because you just get a few tasks per day to work on.
+
 ## Installation
 
 Install `numpy`, `pandas`, and `fuzzywuzzy`.
