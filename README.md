@@ -1,44 +1,48 @@
-# human_task_manager
+# Human Task Manager
 
-How to use.
+## Installation
 
-Set every task you need to do for work/chores,
-that takes longer than 1 hour, and is not email, into
-this program. Give an estimate for hours it will take,
-and periodically update this estimate as you complete
-the task by using the `he` macro to edit the task (`h` for
-human task manager, `e` for edit).
+Clone the repo.
 
-Hard tasks are those with hard deadlines - e.g., a paper
-will not be accepted past the date. 0.5 hardness
-is used for a personal deadline made with another person,
-but is not as hard. 0.0 hardness is a task that has no
-hard cutoff at the date specified.
+Add the following macros to your `.bashrc` file,
+and replace the location of the repo to `DIR`
 
-Use `hs` to sample a task based on score. Use `hsh` to sample a task
-based on how many hours you need to work on it per day before it
-is due. I usually do half-half between these, and tabulate
-the samples for the day: e.g., spend 3 hours on X task, 2 hours on Y, etc.
+```bash
+htm() {
+    cPWD=$(pwd)
+    cd DIR
+    python -c "from htm import *; print($1)"
+    cd $cPWD
+}
+# For piping
+htmp() {
+    cPWD=$(pwd)
+    cd DIR
+    python -c "from htm import *; print($1.to_markdown())"
+    cd $cPWD
+}
+alias hs='htm "sample()"'
+alias hsh='htm "samplehours()"'
+alias he='htm "edit_task()"'
+alias hp='htm "sortload()[print_cols]"'
+alias hph='htm "sortloadhard()[print_cols]"'
+alias ha='htm "add_tasks()"'
+alias hd='htm "del_tasks()"'
+alias hst='htm "printstats()"'
+alias hsoon='htm "get_soon()"'
+alias hpp='htmp "sortload()"'
+```
 
-Use `hp` to print a view of all your tasks.
+## How to use.
 
-Use `hst` to print statistics on your workload over the next 30 days,
-giving how many hours you need to work per day in each time frame.
+Control the task manager from the terminal. All tasks will be stored
+in `tasks.csv`.
 
-If the workload only shows a small number of hours to work per day,
-consider giving yourself more soft deadlines - e.g., set a goal
-with a supervisor to work towards.
-
-## Scoring
-
-Scoring is square with the number of hours/day required, as tasks
-that are sooner should be have more time dedicated to them.
-
-Tasks which are late, but hard=0.5, are assigned
-a max of 3 hours/day. Tasks with hard=0.0 which are late
-have a max of 30 minutes/day.
-
-## TODO
-
-- Underline task due tomorrow.
-- State how many hours/day we have to work in next day, 7 days in order to finish all goals.
+- Add tasks with `ha`.
+- Edit tasks with `hp`.
+- Delete a task with `hd`.
+- Print all tasks, sorted by score, with `hp`.
+- Choose a random tasks, weighted by score, with `hs`.
+- Choose a random tasks, weighted by hours/day, with `hsh`.
+- Print the tasks due soon with `hsoon`.
+- Print statistics about upcoming tasks with `hst`.
