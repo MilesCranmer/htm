@@ -68,7 +68,7 @@ the date.
 ## Columns
 
 - `task`: Name of the task.
-- `score`: How important it is that you work on the task today.
+- `score`: (automatically calculated) How important it is that you work on the task today.
 - `etc`: Estimated time to completion, in hours.
 - `hours/day`: How many hours per day you need to work on it to finish by the deadline.
 - `due`: When the task is due.
